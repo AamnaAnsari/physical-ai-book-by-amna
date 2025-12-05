@@ -9,8 +9,8 @@ const config = {
   favicon: 'img/favicon1.jpeg',
 
   // 2. Deployment Config (GitHub Pages ke liye)
-  url: 'https://AamnaAnsari.github.io', // Jab deploy karein tab apna asli URL dalein
-  baseUrl: '/physical-ai-book-by-amna/', 
+  url: 'https://physical-ai-book-by-amna.vercel.app', // Jab deploy karein tab apna asli URL dalein
+  baseUrl: '/', 
   organizationName: 'AamnaAnsari', // Yahan apna GitHub username likhna
   projectName: 'physical-ai-book-by-amna', // Aapki repo ka naam
   trailingSlash: false,
