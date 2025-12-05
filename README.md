@@ -1,41 +1,40 @@
-# Website
+# 🤖 Physical AI & Humanoid Robotics Textbook
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+> **Bridging the Gap Between Digital Brains and Physical Bodies.**
 
-## Installation
+## 📖 About The Project
 
-```bash
-yarn
-```
+This open-source textbook is designed to guide students and developers through the transition from **Digital AI** (LLMs, Chatbots) to **Embodied Intelligence** (Robots that interact with the physical world).
 
-## Local Development
+Built using **Docusaurus**, this project documents the complete journey of building an autonomous humanoid robot using **ROS 2**, **NVIDIA Isaac Sim**, and **Vision-Language-Action (VLA)** models.
 
-```bash
-yarn start
-```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## 📚 Curriculum Modules
 
-## Build
+The textbook is structured into 7 core modules:
 
-```bash
-yarn build
-```
+| Module | Topic | Key Technologies |
+| :--- | :--- | :--- |
+| **01** | **Intro to Physical AI** | Sensors (LIDAR, IMU), Embodied AI |
+| **02** | **The Robotic Nervous System** | **ROS 2** (Nodes, Topics), Python (`rclpy`) |
+| **03** | **The Digital Twin** | **Gazebo** (Physics), **Unity**, URDF |
+| **04** | **The AI-Robot Brain** | **NVIDIA Isaac Sim**, Nav2, RL |
+| **05** | **Humanoid Development** | Bipedal Walking, Balance, Grasping |
+| **06** | **Vision-Language-Action** | **OpenAI Whisper**, LLMs for Control |
+| **07** | **Capstone Project** | Building the Autonomous Humanoid |
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+---
 
-## Deployment
+## 🛠️ Tech Stack
 
-Using SSH:
+This project leverages cutting-edge tools in both Web Development and Robotics:
 
-```bash
-USE_SSH=true yarn deploy
-```
+* **Documentation:** [Docusaurus v3](https://docusaurus.io/) (React-based SSG)
+* **Robotics Middleware:** [ROS 2 Humble](https://docs.ros.org/en/humble/)
+* **Simulation:** Gazebo & NVIDIA Isaac Sim
+* **AI Integration:** OpenAI Whisper, GPT-4o, PyTorch
+* **Development Workflow:** Spec-Kit Plus (Agentic AI Workflow)
 
-Not using SSH:
+---
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Made By Aamna Ansari.
