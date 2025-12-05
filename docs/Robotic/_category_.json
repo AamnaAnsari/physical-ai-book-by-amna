@@ -1,0 +1,8 @@
+{
+  "label": "Book Chapters",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "course-overview"
+  }
+}

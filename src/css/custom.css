@@ -1,0 +1,35 @@
+/**
+ * Robotic & Engineering Theme for Physical AI Book
+ */
+
+:root {
+  /* Light Mode: Deep Engineering Blue (Professional) */
+  --ifm-color-primary: #0061d4;
+  --ifm-color-primary-dark: #0057bf;
+  --ifm-color-primary-darker: #0052b5;
+  --ifm-color-primary-darkest: #004495;
+  --ifm-color-primary-light: #267ce6;
+  --ifm-color-primary-lighter: #398ae8;
+  --ifm-color-primary-lightest: #72b3f2;
+  
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode: The real "Robotic" feel */
+[data-theme='dark'] {
+  /* Dark Mode: Electric Cyan (Glowing Sci-Fi look) */
+  --ifm-color-primary: #29e3ff;
+  --ifm-color-primary-dark: #0adfff;
+  --ifm-color-primary-darker: #00d2f0;
+  --ifm-color-primary-darkest: #00add6;
+  --ifm-color-primary-light: #52e9ff;
+  --ifm-color-primary-lighter: #66ebff;
+  --ifm-color-primary-lightest: #a3f3ff;
+  
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Optional: Background ko thoda "Metallic Dark" banata hai */
+  --ifm-background-color: #0b1016; 
+  --ifm-background-surface-color: #151b24;
+}
