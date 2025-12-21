@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Book Assistant By Amna</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; height: 100vh; margin: 0; }
+        .chat-container { width: 400px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* Header */
+        .header { background: #0078ff; color: white; padding: 15px; text-align: center; font-weight: bold; }
+        
+        /* Chat History Box */
+        #chat-box { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        
+        /* Message Bubbles */
+        .message { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 14px; line-height: 1.4; }
+        .user-msg { align-self: flex-end; background-color: #0078ff; color: white; border-bottom-right-radius: 0; }
+        .bot-msg { align-self: flex-start; background-color: #e4e6eb; color: black; border-bottom-left-radius: 0; }
+        
+        /* Input Area */
+        .input-area { display: flex; padding: 10px; border-top: 1px solid #ddd; background: #fff; }
+        input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        button { margin-left: 10px; padding: 10px 20px; background: #0078ff; color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #ccc; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="header">📚 Humanoid AI Book Bot</div>
+    
+    <div id="chat-box">
+        <div class="message bot-msg">Hello! Main aapki book ka AI assistant hun. Kijiye sawal?</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="query" placeholder="Ask a question..." onkeypress="handleEnter(event)">
+        <button onclick="sendQuery()" id="send-btn">Send</button>
+    </div>
+</div>
+
+<script>
+    async function sendQuery() {
+        const inputField = document.getElementById("query");
+        const sendBtn = document.getElementById("send-btn");
+        const chatBox = document.getElementById("chat-box");
+        const query = inputField.value.trim();
+
+        if (!query) return;
+
+        // 1. User ka message show karein
+        addMessage(query, "user-msg");
+        inputField.value = "";
+        
+        // Button disable karein taake double click na ho
+        inputField.disabled = true;
+        sendBtn.disabled = true;
+        sendBtn.innerText = "...";
+
+        // 2. Loading show karein
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "message bot-msg";
+        loadingDiv.innerText = "Thinking...";
+        loadingDiv.id = "loading-msg";
+        chatBox.appendChild(loadingDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        try {
+            // 3. Backend se baat karein
+            const res = await fetch("https://rag-chatbot-by-amna-production.up.railway.app/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({query: query})
+            });
+            const data = await res.json();
+            
+            // Loading hatayein aur jawab dikhayein
+            document.getElementById("loading-msg").remove();
+            addMessage(data.answer, "bot-msg");
+
+        } catch (error) {
+            document.getElementById("loading-msg").remove();
+            addMessage("Error: Server connect nahi ho raha.", "bot-msg");
+            console.error(error);
+        }
+
+        // Re-enable controls
+        inputField.disabled = false;
+        sendBtn.disabled = false;
+        sendBtn.innerText = "Send";
+        inputField.focus();
+    }
+
+    function addMessage(text, className) {
+        const chatBox = document.getElementById("chat-box");
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `message ${className}`;
+        msgDiv.innerText = text;
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight; // Auto scroll to bottom
+    }
+
+    // Enter dabane par message bhejein
+    function handleEnter(event) {
+        if (event.key === "Enter") {
+            sendQuery();
+        }
+    }
+</script>
+
+</body>
+</html>
