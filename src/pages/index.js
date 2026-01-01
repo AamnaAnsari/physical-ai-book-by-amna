@@ -1,8 +1,10 @@
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import ChatUI from '@site/src/components/Chatbot/ChatUI'; // <-- import ChatUI
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -16,8 +18,7 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-        </div>
+        <div className={styles.buttons}></div>
       </div>
     </header>
   );
@@ -33,6 +34,8 @@ export default function Home() {
       <main>
         <HomepageFeatures />
       </main>
+      {/* Embed Chatbot here so it appears on all pages of this layout */}
+      <ChatUI />
     </Layout>
   );
 }

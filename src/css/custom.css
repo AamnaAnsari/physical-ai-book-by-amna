@@ -1,35 +1,224 @@
 /**
- * Robotic & Engineering Theme for Physical AI Book
+ * Professional Purple & Royal Blue Interactive Theme for Physical AI Book
  */
 
-:root {
-  /* Light Mode: Deep Engineering Blue (Professional) */
-  --ifm-color-primary: #0061d4;
-  --ifm-color-primary-dark: #0057bf;
-  --ifm-color-primary-darker: #0052b5;
-  --ifm-color-primary-darkest: #004495;
-  --ifm-color-primary-light: #267ce6;
-  --ifm-color-primary-lighter: #398ae8;
-  --ifm-color-primary-lightest: #72b3f2;
-  
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+ :root {
+  /* Primary Gradient Palette */
+  --primary-start: #4f46e5; /* Royal Blue */
+  --primary-end: #7c3aed;   /* Purple */
+  --accent: #a78bfa;
+  --accent-light: #c4b5fd;
+
+  /* Font & Typography */
+  --font-sans: 'Inter', 'Roboto', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* Code Block */
+  --code-bg: rgba(255,255,255,0.05);
+  --code-border: #7c3aed;
+  --highlight-line: rgba(124,58,237,0.15);
+
+  /* Background animation speed */
+  --bg-speed: 25s;
 }
 
-/* Dark Mode: The real "Robotic" feel */
-[data-theme='dark'] {
-  /* Dark Mode: Electric Cyan (Glowing Sci-Fi look) */
-  --ifm-color-primary: #29e3ff;
-  --ifm-color-primary-dark: #0adfff;
-  --ifm-color-primary-darker: #00d2f0;
-  --ifm-color-primary-darkest: #00add6;
-  --ifm-color-primary-light: #52e9ff;
-  --ifm-color-primary-lighter: #66ebff;
-  --ifm-color-primary-lightest: #a3f3ff;
-  
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Body Gradient Animation */
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+  background-size: 400% 400%;
+  animation: gradientBG var(--bg-speed) ease infinite;
+  transition: background 0.5s ease;
+  color: #fff;
+}
 
-  /* Optional: Background ko thoda "Metallic Dark" banata hai */
-  --ifm-background-color: #0b1016; 
-  --ifm-background-surface-color: #151b24;
+/* Dark Mode */
+[data-theme='dark'] {
+  --primary-start: #4338ca; /* Darker Royal Blue */
+  --primary-end: #6b21a8;   /* Darker Purple */
+  --accent: #a78bfa;
+  --accent-light: #c4b5fd;
+
+  --code-bg: rgba(255,255,255,0.05);
+  --code-border: #a78bfa;
+  --highlight-line: rgba(124,58,237,0.2);
+
+  body {
+    color: #e0e7ff;
+  }
+}
+
+/* Gradient Animation Keyframes */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* Links */
+a {
+  position: relative;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+a:hover {
+  color: var(--accent-light);
+}
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-light);
+  transition: width 0.3s ease;
+}
+a:hover::after {
+  width: 100%;
+}
+
+/* Code Blocks */
+.codeBlock {
+  background: var(--code-bg);
+  border-left: 4px solid var(--code-border);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+.codeBlock:hover {
+  border-left-color: var(--accent);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Highlighted Line */
+.docusaurus-highlighted-code-line {
+  background-color: var(--highlight-line);
+  transition: background-color 0.3s ease;
+}
+
+/* Headings Animations */
+h1, h2, h3, h4, h5 {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+h1:hover, h2:hover, h3:hover {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* Cards & Panels */
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Chat Toggle & Window */
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  border-radius: 50px;
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.chat-toggle:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  height: 450px;
+  border-radius: 0.75rem;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.chat-window.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.05);
+}
+.chat-message.user {
+  text-align: right;
+  color: #fff;
+  margin: 5px 0;
+}
+.chat-message.bot {
+  text-align: left;
+  color: var(--accent);
+  margin: 5px 0;
+}
+
+/* Chat Input */
+.chat-input-container {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.chat-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+.chat-send-btn {
+  padding: 0.6rem 1rem;
+  background: var(--primary-start);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.chat-send-btn:hover {
+  transform: scale(1.05);
+  background: var(--accent);
 }
